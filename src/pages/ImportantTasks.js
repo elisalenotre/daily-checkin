@@ -16,7 +16,7 @@ export default function ImportantTasks({ data, setData }) {
     <div className="card">
     <div style={{ padding: '20px' }}>
       <h3>Quelles sont 3 tâches ou mindsets à avoir aujourd'hui ? </h3>
-      <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ex: Terminer ticket frontend" />
+      <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ex: Terminer la vaisselle" />
       <button onClick={addTask}>Ajouter</button>
       {data.importantTasks.length >= 3 && <button onClick={() => navigate('/bonus')}>Suivant</button>}
       <ul>

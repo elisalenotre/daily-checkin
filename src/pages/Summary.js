@@ -10,7 +10,8 @@ export default function Summary({ data }) {
       <h2>Ta journée :</h2>
 
       <h3>Rendez-vous :</h3>
-      {data.meetings.map((m, i) => <div key={i}><input type="checkbox" /> {m}</div>)}
+      {data.meetings.map((m, i) => (<div key={i}><input type="checkbox" /> {m.label}</div>))}
+
 
       <h3>Tâches Importantes :</h3>
       {data.importantTasks.map((t, i) => <div key={i}><input type="checkbox" /> {t}</div>)}
