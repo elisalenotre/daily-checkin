@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Welcome from './pages/Welcome';
+import ImportantMeetings from './pages/ImportantMeetings';
+import ImportantTasks from './pages/ImportantTasks';
+import BonusTasks from './pages/BonusTasks';
+import Summary from './pages/Summary';
 
 function App() {
+  const [data, setData] = useState({
+    meetings: [],
+    importantTasks: [],
+    bonusTasks: [],
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/meetings" element={<ImportantMeetings data={data} setData={setData} />} />
+        <Route path="/tasks" element={<ImportantTasks data={data} setData={setData} />} />
+        <Route path="/bonus" element={<BonusTasks data={data} setData={setData} />} />
+        <Route path="/summary" element={<Summary data={data} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
