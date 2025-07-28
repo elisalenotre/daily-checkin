@@ -13,6 +13,7 @@ export default function ImportantTasks({ data, setData }) {
   };
 
   return (
+    <div className="card">
     <div style={{ padding: '20px' }}>
       <h3>Quelles sont 3 tâches ou mindsets à avoir aujourd'hui ? </h3>
       <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Ex: Terminer ticket frontend" />
@@ -21,6 +22,7 @@ export default function ImportantTasks({ data, setData }) {
       <ul>
         {data.importantTasks.map((t, i) => <li key={i}>{t}</li>)}
       </ul>
+    </div>
     </div>
   );
 }

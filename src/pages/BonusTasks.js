@@ -13,6 +13,7 @@ export default function BonusTasks({ data, setData }) {
   };
 
   return (
+    <div className="card">
     <div style={{ padding: '20px' }}>
       <h3>Autres choses à faire aujourd'hui ? (Bonus)</h3>
       <input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Tâche bonus..." />
@@ -22,6 +23,7 @@ export default function BonusTasks({ data, setData }) {
       <ul>
         {data.bonusTasks.map((b, i) => <li key={i}>{b}</li>)}
       </ul>
+    </div>
     </div>
   );
 }

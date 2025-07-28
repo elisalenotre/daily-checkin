@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function Summary({ data }) {
   return (
+    <div className="card">
     <div style={{ padding: '20px' }}>
       <h2>Ta journée :</h2>
 
@@ -15,6 +16,7 @@ export default function Summary({ data }) {
         <h3>Tâches Bonus :</h3>
         {data.bonusTasks.map((b, i) => <div key={i}><input type="checkbox" /> {b}</div>)}
       </>}
+    </div>
     </div>
   );
 }
