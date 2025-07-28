@@ -15,7 +15,7 @@ function App() {
     bonusTasks: [],
   });
   const [currentReminder, setCurrentReminder] = useState(null);
-  const [remindedMeetings, setRemindedMeetings] = useState([]); // <-- Ajouté
+  const [remindedMeetings, setRemindedMeetings] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,7 +27,7 @@ function App() {
       );
       if (match && !currentReminder) {
         setCurrentReminder(match.label);
-        setRemindedMeetings(prev => [...prev, match.label]); // <-- Ajouté
+        setRemindedMeetings(prev => [...prev, match.label]);
         setTimeout(() => setCurrentReminder(null), 10000);
       }
     }, 1000);
