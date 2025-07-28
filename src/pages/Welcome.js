@@ -10,5 +10,5 @@ export default function Welcome() {
     }, 4000);
   }, [navigate]);
 
-  return <h1 style={{textAlign: 'center', marginTop: '40px'}}>Commençons la journée ensemble !</h1>;
+  return  <div className="welcome-card"> <h1>Commençons la journée ensemble ! </h1></div>
 }
