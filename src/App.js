@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Welcome from './pages/Welcome';
 import ImportantMeetings from './pages/ImportantMeetings';
 import ImportantTasks from './pages/ImportantTasks';
 import BonusTasks from './pages/BonusTasks';
 import Summary from './pages/Summary';
-import Clock from './components/Clock';
-import PopupReminder from './components/PopupReminder';
+import Clock from './components/Clock/Clock';
+import PopupReminder from './components/PopupReminder/PopupReminder';
 
 function App() {
   const [data, setData] = useState({
@@ -16,6 +16,19 @@ function App() {
   });
   const [currentReminder, setCurrentReminder] = useState(null);
   const [remindedMeetings, setRemindedMeetings] = useState([]);
+
+  const [stats, setStats] = useState({
+    fatigue: 20,
+    stress: 30,
+    social: 40,
+    culture: 10,
+    money: 50,
+    assiduite: 50,
+    proprete: 20,
+    sante: 30,
+  });
+
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,12 +41,16 @@ function App() {
       if (match && !currentReminder) {
         setCurrentReminder(match.label);
         setRemindedMeetings(prev => [...prev, match.label]);
-        setTimeout(() => setCurrentReminder(null), 10000);
+        timeoutRef.current = setTimeout(() => setCurrentReminder(null), 10000);
       }
     }, 1000);
 
-    return () => clearInterval(interval);
-  }, [data.meetings, currentReminder, remindedMeetings]);
+    return () => {
+      clearInterval(interval);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+
+  }, [data.meetings, remindedMeetings]);
 
   return (
     <BrowserRouter>
@@ -44,7 +61,7 @@ function App() {
         <Route path="/meetings" element={<ImportantMeetings data={data} setData={setData} />} />
         <Route path="/tasks" element={<ImportantTasks data={data} setData={setData} />} />
         <Route path="/bonus" element={<BonusTasks data={data} setData={setData} />} />
-        <Route path="/summary" element={<Summary data={data} />} />
+        <Route path="/summary" element={<Summary data={data} stats={stats} />} />
       </Routes>
     </BrowserRouter>
   );

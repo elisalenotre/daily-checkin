@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import StatusBoard from '../components/StatusBoard/StatusBoard';
 
-export default function Summary({ data }) {
+export default function Summary({ data, stats }) {
   const navigate = useNavigate();
 
   return (
@@ -22,6 +23,7 @@ export default function Summary({ data }) {
       </>}
       <button style={{marginTop: '20px'}} onClick={() => navigate('/')}>Recommencer</button>
       </div>
+      <StatusBoard stats={stats} />
     </div>
   );
 }
