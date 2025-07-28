@@ -5,6 +5,7 @@ import ImportantMeetings from './pages/ImportantMeetings';
 import ImportantTasks from './pages/ImportantTasks';
 import BonusTasks from './pages/BonusTasks';
 import Summary from './pages/Summary';
+import Clock from './components/Clock';
 
 function App() {
   const [data, setData] = useState({
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Clock />
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/meetings" element={<ImportantMeetings data={data} setData={setData} />} />
