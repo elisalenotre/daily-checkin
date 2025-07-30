@@ -14,7 +14,7 @@ export default function ImportantTasks({ data, setData }) {
         ...data,
         importantTasks: [
           ...data.importantTasks, 
-          { label: input, category: selectedCategory }
+          { label: input, category: selectedCategory, completed: false}
         ]
       });
       setInput('');

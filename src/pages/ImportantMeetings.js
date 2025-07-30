@@ -16,7 +16,7 @@ export default function ImportantMeetings({ data, setData }) {
       const formattedTime = `${hours}:${minutes}`;
       setData({
         ...data,
-        meetings: [...data.meetings, { time: formattedTime, label: input, category: selectedCategory }]
+        meetings: [...data.meetings, { time: formattedTime, label: input, category: selectedCategory, completed: false }]
       });
       setInput('');
     }

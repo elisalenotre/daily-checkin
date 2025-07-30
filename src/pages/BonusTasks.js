@@ -12,7 +12,7 @@ export default function BonusTasks({ data, setData }) {
       setData({ ...data, 
         bonusTasks: [
           ...data.bonusTasks, 
-          { label: input, category: selectedCategory}] });
+          { label: input, category: selectedCategory, completed: false}] });
       setInput('');
     }
   };
