@@ -1,0 +1,22 @@
+.moment-card {
+  border: 2px dashed var(--accent);
+  padding: 20px;
+  border-radius: 20px;
+  margin: 30px auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.moment-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.trinket-img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 12px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

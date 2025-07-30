@@ -25,7 +25,8 @@ input {
 }
 
 button {
- background-color: var(--primary);
+  font-family: 'Fredoka', sans-serif;
+  background-color: var(--primary);
   border: none;
   color: white;
   font-size: 16px;
@@ -51,7 +52,7 @@ h1, h2, h3 {
 }
 
 .card {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   margin-top: 10vh;
   padding: 24px;
@@ -59,9 +60,6 @@ h1, h2, h3 {
   background-color: white;
   box-shadow: 0 6px 0 var(--secondary);
   border: 2px solid var(--secondary);
-  align-items: center;
-  justify-content: center;
-  display: flex;
 }
 
 input[type="checkbox"] {
@@ -83,4 +81,20 @@ input[type="checkbox"] {
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+select {
+  font-family: 'Fredoka', sans-serif;
+  padding: 8px 12px;
+  margin-left: 8px;
+  border-radius: 12px;
+  border: 2px solid var(--secondary);
+  font-size: 16px;
 }

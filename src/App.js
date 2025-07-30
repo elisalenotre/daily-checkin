@@ -7,6 +7,7 @@ import BonusTasks from './pages/BonusTasks';
 import Summary from './pages/Summary';
 import Clock from './components/Clock/Clock';
 import PopupReminder from './components/PopupReminder/PopupReminder';
+import DailyMoment from './pages/DailyMoment';
 
 function App() {
   const [data, setData] = useState({
@@ -61,10 +62,90 @@ function App() {
         <Route path="/meetings" element={<ImportantMeetings data={data} setData={setData} />} />
         <Route path="/tasks" element={<ImportantTasks data={data} setData={setData} />} />
         <Route path="/bonus" element={<BonusTasks data={data} setData={setData} />} />
-        <Route path="/summary" element={<Summary data={data} stats={stats} />} />
+        <Route path="/moment" element={<DailyMoment />} />
+        <Route path="/summary" element={
+          <Summary data={data} stats={calculateStats([...data.importantTasks, ...data.bonusTasks, ...data.meetings])} />
+        } />
+
       </Routes>
     </BrowserRouter>
   );
 }
+
+const calculateStats = (tasks) => {
+  const newStats = {
+    fatigue: 20,
+    stress: 30,
+    social: 40,
+    culture: 10,
+    money: 50,
+    assiduite: 50,
+    proprete: 20,
+    sante: 30,
+  };
+
+  tasks.forEach(task => {
+    switch (task.category) {
+      case 'Work':
+        newStats.assiduite += 10;
+        newStats.fatigue += 5;
+        break;
+
+      case 'School':
+      case 'Studying':
+        newStats.assiduite += 10;
+        newStats.fatigue += 5;
+        newStats.stress += 5;
+        break;
+
+      case 'Sport':
+        newStats.sante += 10;
+        newStats.fatigue += 5;
+        break;
+
+      case 'Ménage':
+        newStats.proprete += 10;
+        newStats.sante += 5;
+        newStats.fatigue += 5;
+        break;
+
+      case 'Shopping':
+        newStats.money -= 10;
+        newStats.social += 5;
+        break;
+
+      case 'Cinéma':
+        newStats.culture += 10;
+        newStats.social += 10;
+        newStats.money -= 5;
+        break;
+
+      case 'Arts/Musée':
+        newStats.culture += 10;
+        newStats.fatigue += 5;
+        newStats.money -= 5;
+        break;
+
+      default:
+        break;
+    }
+
+    if (newStats.social < 20 || newStats.culture < 20) {
+      newStats.stress += 5;
+    }
+
+    if (newStats.social > 70) {
+      newStats.fatigue += 5;
+    }
+
+    // Maintenir stats entre 0-100
+    Object.keys(newStats).forEach(k => {
+      newStats[k] = Math.min(Math.max(newStats[k], 0), 100);
+    });
+  });
+
+  return newStats;
+};
+
 
 export default App;
