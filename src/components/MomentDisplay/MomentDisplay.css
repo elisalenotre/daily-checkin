@@ -15,8 +15,8 @@
 
 .trinket-img {
   max-width: 100%;
-  height: auto;
-  margin-top: 12px;
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-height: 120px;
+  border-radius: 12px;
+  object-fit: contain;
+  margin: 8px 0;
 }
