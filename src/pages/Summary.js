@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StatusBoard from '../components/StatusBoard/StatusBoard';
 import MomentDisplay from '../components/MomentDisplay/MomentDisplay';
+import chambreImage from '../assets/room.jpg';
 
 export default function Summary({ data, stats, setData }) {
   const navigate = useNavigate();
@@ -54,6 +55,11 @@ const addNewBonus = () => {
   return (
     <div className="card">
       <div style={{ padding: '20px' }}>
+        
+      <div className="image-box">
+        <img src={chambreImage} alt="Chambre pixel" />
+      </div>
+
         <h2>Ta journée :</h2>
 
         <h3>Rendez-vous :</h3>

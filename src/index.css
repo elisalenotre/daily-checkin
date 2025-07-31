@@ -98,3 +98,13 @@ select {
   border: 2px solid var(--secondary);
   font-size: 16px;
 }
+
+.image-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-box img {
+  max-width: 320px;
+}
