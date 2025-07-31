@@ -18,6 +18,39 @@ export default function Summary({ data, stats, setData }) {
     setData({ ...data, [type]: updatedTasks });
   };
 
+  const [newMeeting, setNewMeeting] = useState('');
+  const [newMeetingCategory, setNewMeetingCategory] = useState('Work');
+
+  const [newBonus, setNewBonus] = useState('');
+  const [newBonusCategory, setNewBonusCategory] = useState('Work');
+
+  const categories = ['Work', 'School', 'Studying', 'Sport', 'Ménage', 'Shopping', 'Cinéma', 'Arts/Musée'];
+
+  const addNewMeeting = () => {
+  if (!newMeeting.trim()) return;
+  const timeMatch = newMeeting.match(/(\d{1,2})[h:]?(\d{2})?/i);
+  if (timeMatch) {
+    const hours = timeMatch[1].padStart(2, '0');
+    const minutes = (timeMatch[2] || '00').padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}`;
+    setData({
+      ...data,
+      meetings: [...data.meetings, { time: formattedTime, label: newMeeting, category: newMeetingCategory, completed: false }]
+    });
+    setNewMeeting('');
+  }
+};
+
+const addNewBonus = () => {
+  if (newBonus.trim()) {
+    setData({
+      ...data,
+      bonusTasks: [...data.bonusTasks, { label: newBonus, category: newBonusCategory, completed: false }]
+    });
+    setNewBonus('');
+  }
+};
+
   return (
     <div className="card">
       <div style={{ padding: '20px' }}>
@@ -33,6 +66,19 @@ export default function Summary({ data, stats, setData }) {
             /> {m.label} <strong>({m.category})</strong>
           </div>
         ))}
+        {/* Ajouter nouveau rendez-vous */}
+    <input
+      value={newMeeting}
+      onChange={(e) => setNewMeeting(e.target.value)}
+      placeholder="Ex: 15h30 Coiffeur"
+    />
+    <select
+      value={newMeetingCategory}
+      onChange={(e) => setNewMeetingCategory(e.target.value)}
+    >
+      {categories.map(cat => <option key={cat}>{cat}</option>)}
+    </select>
+    <button onClick={addNewMeeting}>Ajouter RDV</button>
 
         <h3>Tâches Importantes :</h3>
         {data.importantTasks.map((t, i) => (
@@ -57,13 +103,26 @@ export default function Summary({ data, stats, setData }) {
                 /> {b.label} <strong>({b.category})</strong>
               </div>
             ))}
+             {/* Ajouter nouvelle tâche bonus */}
+    <input
+      value={newBonus}
+      onChange={(e) => setNewBonus(e.target.value)}
+      placeholder="Ex: Acheter fleurs"
+    />
+    <select
+      value={newBonusCategory}
+      onChange={(e) => setNewBonusCategory(e.target.value)}
+    >
+      {categories.map(cat => <option key={cat}>{cat}</option>)}
+    </select>
+    <button onClick={addNewBonus}>Ajouter Bonus</button>
           </>
         )}
+      </div>
 
         <button style={{ marginTop: '20px' }} onClick={() => navigate('/')}>
           Recommencer
         </button>
-      </div>
 
       <StatusBoard stats={stats} />
 
