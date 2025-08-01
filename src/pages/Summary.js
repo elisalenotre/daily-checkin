@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StatusBoard from '../components/StatusBoard/StatusBoard';
 import MomentDisplay from '../components/MomentDisplay/MomentDisplay';
-import chambreImage from '../assets/room.jpg';
+import chambreImage from '../assets/room.png';
 
 export default function Summary({ data, stats, setData }) {
   const navigate = useNavigate();
