@@ -8,7 +8,8 @@ export default function DailyMoment() {
     trinket: '',
     activity: '',
     meal: '',
-    care: ''
+    care: '',
+    secret: ''
   });
 
   const [trinketImg, setTrinketImg] = useState('');
@@ -44,7 +45,7 @@ export default function DailyMoment() {
 
   return (
     <div className="card">
-      <h2>Tes trucs du jour</h2>
+      <h2>Mon carnet</h2>
 
       <label>Musique (lien YouTube)</label>
       <input name="music" value={moment.music} onChange={handleChange} />
@@ -63,6 +64,9 @@ export default function DailyMoment() {
 
       <label>Soin</label>
       <input name="care" value={moment.care} onChange={handleChange} />
+
+      <label>Quelque chose à dire ?</label>
+      <input name="secret" value={moment.secret} onChange={handleChange} />
 
       <button onClick={handleSave}>Enregistrer</button>
     </div>

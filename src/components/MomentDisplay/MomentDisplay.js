@@ -6,7 +6,7 @@ export default function MomentDisplay({moment, onEdit}) {
 
   return (
     <div className="moment-card">
-      <h3>Trucs du jour</h3>
+      <h3>Mon carnet</h3>
       
       <p><strong>Musique du jour :</strong></p><p><a href={moment.music} target="_blank" rel="noreferrer">Cliques ici pour écouter</a></p>
       <p><strong>Film ou Série :</strong> {moment.movie}</p>

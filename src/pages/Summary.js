@@ -60,7 +60,7 @@ const addNewBonus = () => {
         <img src={chambreImage} alt="Chambre pixel" />
       </div>
 
-        <h2>Ta journée :</h2>
+        <h2>Ma journée :</h2>
 
         <h3>Rendez-vous :</h3>
         {data.meetings.map((m, i) => (
